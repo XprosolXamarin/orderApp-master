@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             x:Class="orderApp.Views.CarouselPage1"
+             BackgroundImageSource="B1.png"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <ViewModels:Carousel1ViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout>
+        
+        <CarouselView ItemsSource="{Binding Items1}"
+                      IndicatorView="indicatorView"
+                      x:Name="List"
+                     >
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Spacing="0" >
+                        <Image Source="Top.png"/>
+                        
+                            <Label Text="{Binding Details}"
+                                  
+                                       FontFamily="ThemeFontMedium"
+                                       TextColor="Black"
+                                       MaxLines="5"
+                                      FontSize="Small"
+                               HorizontalTextAlignment="Center" />
+                        <StackLayout Orientation="Vertical"  HorizontalOptions="Center"
+                                       VerticalOptions="Start">
+                            <Frame  HeightRequest="430" BackgroundColor="Transparent"
+                                   WidthRequest="500" Padding="0" >
+                                <Image Source="{Binding ImageUrl}" 
+                                   Aspect="AspectFit"
+                                  />
+                            </Frame>
+                           
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Label  Text="{Binding  getStart}" TextColor="White" FontFamily="ThemeFontBold" FontSize="Small" VerticalTextAlignment="Center"
+                                            BackgroundColor="Transparent">
+                                        
+                                    </Label>
+                                <ImageButton BackgroundColor="Transparent" Source="{Binding nextImage}" HeightRequest="30" WidthRequest="30" Aspect="AspectFit"
+                                              Command="{Binding Path=BindingContext.NavigateAppShellpage, Source={x:Reference List}}"/>
+
+
+                            </StackLayout>
+                           
+
+
+                            <!--  Command="{Binding BindingContext.NavigateHomePage, Source={x:Reference List}}" CommandParameter="{Binding}"-->
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+       
+           
+            <IndicatorView x:Name="indicatorView"
+                           Grid.Row="0"
+                         
+                       IndicatorsShape="Circle"
+                       IndicatorColor="#FFE4E1"
+                       SelectedIndicatorColor="White"
+                       HorizontalOptions="Center"
+                       IndicatorSize="10"
+                       Margin="0,0,0,20" />
+      
+       
+    </StackLayout>
+</ContentPage>

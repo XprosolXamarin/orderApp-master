@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             x:Class="orderApp.Views.OrderAcceptedPage" 
+           
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <ViewModels:CartViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" Auto"/>
+
+                <RowDefinition Height=" *"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- <Grid Grid.Row="0" BackgroundColor="#00ADEF" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+
+
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Horizontal" 
+                             Grid.Row="0"
+                             Margin="10,20,0,0">
+
+                    <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
+                             Source="Back.png" 
+                                 HeightRequest="25"
+                                 HorizontalOptions="Start" Command="{Binding NavigateSummaryPage}"/>
+                    <Label Text="Checkout" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="StartAndExpand"
+                           VerticalTextAlignment="Center"/>
+
+                     <Label Text="Items(5)" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+            -->
+            <StackLayout Grid.Row="1">
+                <ScrollView>
+                    <StackLayout Padding="20, 30">
+                        <Image Source="Pay.png" Aspect="AspectFit"/>
+                        <Label Text="Order Accepted!" TextColor="Black" FontSize="Medium" FontFamily="ThemeFontBold" Padding="0, 10" HorizontalOptions="CenterAndExpand"/>
+                        <Label TextColor="Black" FontSize="Small" FontFamily="ThemeFont" Padding="60, 10" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Your Order No"/>
+                                        <Span Text=" "/>
+                                        <Span Text="#32434"/>
+                                        <Span Text=" "/>
+                                        <Span Text="has Placed"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button BackgroundColor="#00ADEF" TextColor="White" FontFamily="ThemeFontBold" Text="Continue Shopping" Margin="20" CornerRadius="30" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Command="{Binding NavigateDashboardPage}" CommandParameter="popToRootAndPushTrackOrder"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

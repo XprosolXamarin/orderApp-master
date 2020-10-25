@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             x:Class="orderApp.Views.CheckoutPage"
+              NavigationPage.HasBackButton="False"
+             BackgroundColor="White"
+              Title="Checkout">
+    <ContentPage.BindingContext>
+        <ViewModels:CartViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" Auto"/>
+
+                <RowDefinition Height=" *"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--
+            <Grid Grid.Row="0" BackgroundColor="#00ADEF" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+
+
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Horizontal" 
+                             Grid.Row="0"
+                             Margin="10,20,0,0">
+
+                    <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
+                             Source="Back.png" 
+                                 HeightRequest="25"
+                                 HorizontalOptions="Start" Command="{Binding NavigateCartPage}"/>
+                    <Label Text="Checkout" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="StartAndExpand"
+                           VerticalTextAlignment="Center"/>
+
+                 <Label Text="Items(5)" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>  -->
+         
+            <StackLayout Grid.Row="1" Orientation="Vertical" Padding="20">
+
+                <!-- start TIMELINE BUBBLES -->
+                <StackLayout Orientation="Horizontal" Spacing="0" Padding="10, 0">
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD">
+                        <Frame BackgroundColor="#00ADEF" CornerRadius="50"/>
+                    </Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#DDDDDD" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD"/>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#DDDDDD" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Delivery" TextColor="Black"  HorizontalOptions="StartAndExpand"/>
+                    <Label Text="Address" TextColor="#707070"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Payments" TextColor="#707070"  HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <!-- end TIMELINE BUBBLES -->
+
+                <!-- start Standard Delivery -->
+                <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
+                    <StackLayout>
+                        <Label Text="Standard Delivery" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="Order will be delivered between 3-5 business days " TextColor="Black" 
+                               FontSize="Small" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <CheckBox Color="#00ADEF" IsChecked="True" HorizontalOptions="EndAndExpand"  />
+
+                </StackLayout>
+                <!-- end Standard Delivery -->
+
+
+
+                <!-- start Next Day Delivery -->
+                <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
+                    <StackLayout>
+                        <Label Text="Next Day Delivery" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="Place your order before 6pm and your items will be delivered the next day" TextColor="Black" 
+                               FontSize="Small" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <CheckBox Color="#00ADEF" HorizontalOptions="EndAndExpand" />
+
+                </StackLayout>
+                <!-- end Next Day Delivery -->
+
+
+                <!-- Start Nominated Delivery -->
+                <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
+                    <StackLayout>
+                        <Label Text="Nominated Delivery" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="Pick a Particular date from the Calendar and order will be delivered on selected date" TextColor="Black" 
+                               FontSize="Small" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <CheckBox Color="#00ADEF"  HorizontalOptions="EndAndExpand"  Margin="10,0,0,0"/>
+
+                </StackLayout>
+                <!-- end Nominated Delivery -->
+
+                <Button CornerRadius="10" Text="NEXT" HorizontalOptions="EndAndExpand" WidthRequest="150" TextColor="White" BackgroundColor="#00ADEF" VerticalOptions="EndAndExpand" Command="{Binding NavigateAddressPage}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

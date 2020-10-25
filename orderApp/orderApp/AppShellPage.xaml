@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+          
+    <Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:orderApp"
+             x:Class="orderApp.AppShellPage"
+        xmlns:Helpers="clr-namespace:orderApp.Helpers">
+        <Shell.FlyoutHeader>
+            <local:HeaderContentView/>
+        </Shell.FlyoutHeader>
+
+        <FlyoutItem Title="MyTabApp"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems">
+
+            <Tab Icon="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.Home},
+                                                    Size=70, Color=#0695DA}" Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.DashBoardPage}"/>
+            </Tab>
+
+
+
+        </FlyoutItem>
+        <FlyoutItem Title="MyTabApp"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems">
+
+            <Tab Icon="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.QrcodeScan},
+                                                    Size=70, Color=#0695DA}" Title="Scan Product">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.DashBoardPage}"/>
+            </Tab>
+
+        </FlyoutItem>
+       
+        <FlyoutItem Title="MyTabApp"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems">
+
+            <Tab Icon="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.TextSearch},
+                                                    Size=70, Color=#0695DA}" Title="Search Product">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.DashBoardPage}"/>
+            </Tab>
+
+        </FlyoutItem>
+        <FlyoutItem Title="MyTabApp"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems">
+
+            <Tab Icon="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.HelpCircleOutline},
+                                                    Size=70, Color=#0695DA}" Title="Help">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.DashBoardPage}"/>
+            </Tab>
+
+        </FlyoutItem>
+        <FlyoutItem Title="MyTabApp"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems">
+
+            <Tab Icon="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.InformationOutline},
+                                                    Size=70, Color=#0695DA}" Title="About">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.DashBoardPage}"/>
+            </Tab>
+
+        </FlyoutItem>
+    <FlyoutItem Title="MyTabApp"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems">
+
+        <Tab Icon="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.Login},
+                                                    Size=70, Color=#0695DA}" Title="Sign in">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.LoginPage}"/>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="MyTabApp"
+               Shell.TabBarIsVisible="False"
+               FlyoutDisplayOptions="AsMultipleItems">
+
+        <Tab Icon="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.CashRegister},
+                                                    Size=70, Color=#0695DA}" Title="Sign up">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.RegisterPage}"/>
+        </Tab>
+
+    </FlyoutItem>
+    <ShellContent Title="Logout" Icon="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.Logout},
+                                                    Size=70, Color=#0695DA}" ContentTemplate="{DataTemplate local:Views.DashBoardPage}"/>
+        
+
+    </Shell>

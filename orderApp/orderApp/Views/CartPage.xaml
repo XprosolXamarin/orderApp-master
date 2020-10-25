@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:Pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="orderApp.Views.CartPage"
+             xmlns:Helpers="clr-namespace:orderApp.Helpers" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             
+             Title="Your Cart"
+             BackgroundColor="#E8E8EA">
+    <ContentPage.BindingContext>
+        <ViewModels:CartViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" Auto"/>
+               
+                <RowDefinition Height=" *"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--  <Grid Grid.Row="0" BackgroundColor="#00ADEF" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                  
+
+                </Grid.RowDefinitions>
+               
+                <StackLayout Orientation="Horizontal" 
+                             Grid.Row="0"
+                             Margin="10,20,0,0">
+
+                    <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
+                             Source="LeftArrow.png" 
+                                 HeightRequest="25"
+                                 HorizontalOptions="Start" Command="{Binding NavigateDashboardPage}"/>
+                    <Label Text="Your Cart" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="StartAndExpand"
+                           VerticalTextAlignment="Center"/>
+                   
+                    <Label Text="Items(5)" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"/>
+                </StackLayout>
+               
+
+
+
+            </Grid>-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+              
+                <CollectionView 
+                    Margin="10"
+                    ItemsSource="{Binding CartItems}"
+                    SelectionMode="None"
+                    RemainingItemsThreshold="0"
+                    RemainingItemsThresholdReachedCommand="{Binding LoadCartItemsCommand}" x:Name="List">
+                    
+                    <CollectionView.EmptyView>
+                        <Label
+                    Text="Your cart is empty"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout VerticalItemSpacing="30"  Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.Footer>
+                        <ActivityIndicator
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Color="#00ADEF"/>
+                        
+                    </CollectionView.Footer>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem 
+                               IconImageSource="Star1.png"
+                                                   
+                               BackgroundColor="LightGreen"
+                               />
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                                   IconImageSource="Delete.png"
+                               BackgroundColor="#FF3D00"
+                                            Command="{Binding Path=BindingContext.RemoveItem, Source={x:Reference List}}" CommandParameter="{Binding}" 
+                               />
+                                       
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Frame HasShadow="True" BorderColor="#00ADEF" >
+
+
+                                    <Grid >
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Frame CornerRadius="10" Padding="0">
+                                            <Image
+                                            Grid.RowSpan="2"
+                                            Source="{Binding Image}"
+                                            HeightRequest="75"
+                                            WidthRequest="75"
+                                            Aspect="AspectFit"/>
+                                        </Frame>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center">
+                                            <Label Text="{Binding Name}" TextColor="Black" FontSize="Small" FontFamily="ThemeFontBold"/>
+                                            <!--   <Label Text="{Binding Type, StringFormat='Size: {0}'}"/>
+                                            <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}"/>
+                                           
+                                        <Label Text="{Binding Price, StringFormat='Rs/-{0:C}'}" TextColor="#00ADEF" FontSize="Small" FontFamily="ThemeFontBold"/> -->
+                                            <Frame Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" >
+                                                <StackLayout Orientation="Horizontal" Spacing="10">
+
+                                                    <Label Text="-" FontSize="Large" Margin="5,0" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" WidthRequest="20" HorizontalTextAlignment="Center">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.DecreaseQtyCommand, Source={x:Reference List}, Mode=TwoWay}" CommandParameter="{Binding}"/>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+
+                                                    <Label Text="{Binding purchasedQty}" FontSize="Medium" />
+
+                                                    <Label Text="+" FontSize="Large" Margin="5,0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" WidthRequest="20" >
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.IncreaseQtyCommand, Source={x:Reference List}, Mode=TwoWay}" CommandParameter="{Binding .}"/>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+
+                                                </StackLayout>
+
+                                            </Frame>
+                                        </StackLayout>
+                                        <Label Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Price, StringFormat='Rs/-{0:C}'}" TextColor="#00ADEF" FontSize="Small" FontFamily="ThemeFontBold"/>
+
+                                        <!--       <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Orientation="Horizontal"
+                                            Spacing="10">       
+                                         <Button
+                                    Text="Remove from cart"
+                                    
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="#f58d11"
+                                    TextColor="#fff"
+                                    CornerRadius="0"/>
+                                    </StackLayout>-->
+                                    </Grid>
+
+                                </Frame>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Frame  HasShadow="True" Padding="0" Grid.Row="1">
+                    <StackLayout Orientation="Horizontal" Padding="20">
+                        <StackLayout Orientation="Vertical" >
+                            <Label Text="Total (inc. tax)" FontSize="Small" HorizontalTextAlignment="Center"/>
+                            <Label Text="RS-/2500" FontSize="Small" TextColor="Black" FontFamily="ThemeFontBold" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <Button BorderColor="DarkBlue"
+                                CornerRadius="2"
+                                Text="Checkout now"
+                                TextColor="White"
+                                HorizontalOptions="EndAndExpand"
+                                IsVisible="{Binding CartHasItem}"
+                                Command="{Binding CheckOutCommand}"
+                                BackgroundColor="#00ADEF"/>
+                    </StackLayout>
+
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             x:Class="orderApp.Views.SummaryPage"
+             Title="Summary"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <ViewModels:CartViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=" Auto"/>
+
+                    <RowDefinition Height=" *"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--  <Grid Grid.Row="0" BackgroundColor="#00ADEF" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+
+
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Horizontal" 
+                             Grid.Row="0"
+                             Margin="10,20,0,0">
+
+                        <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
+                             Source="Back.png" 
+                                 HeightRequest="25"
+                                 HorizontalOptions="Start"  Command="{Binding  NavigatePaymentsCommand}"/>
+                        <Label Text="Summary" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="Center"
+                           VerticalTextAlignment="Center"/>
+
+                        <Label Text="Items(5)" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Grid>
+                -->
+                <ScrollView Grid.Row="1">
+                    <StackLayout  Margin="20,0,20,0">
+                        <CollectionView
+                    ItemsSource="{Binding CartItems}"
+                    SelectionMode="None"
+                    HeightRequest="160"
+                    Margin="10">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Horizontal"
+                                         HorizontalItemSpacing="20"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="0" Orientation="Vertical">
+                                        <Frame CornerRadius="5" Padding="0">
+                                            <Image Source="{Binding Image}" Aspect="AspectFit" HeightRequest="100" WidthRequest="100"/>
+                                        </Frame>
+                                        <StackLayout Margin="2,0,0,0">
+                                            <Label Text="{Binding Name}" FontFamily="ThemeFont" FontSize="Small" TextColor="Black"/>
+                                            <Label Text="{Binding Price}" FontFamily="ThemeFont" FontSize="Small" TextColor="#00ADEF"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Button Text="change" FontFamily="ThemeFontBold" BackgroundColor="Transparent" HorizontalOptions="Start" Margin="-15, -15, 0, 0" TextColor="#00ADEF" Command="{Binding NavigateCartPage}"/>
+
+                        <BoxView BackgroundColor="#EBEBEB" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+
+                        <!-- start SHIPPING ADDRESS -->
+                        <StackLayout  Margin="0, 10">
+                            <Label Text="Shipping Address" FontFamily="ThemeFontBold" TextColor="Black" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label Text="12, Bay brook, Sharps Rd, Keilor East, Melbourne, Australia" FontFamily="ThemeFont" TextColor="Black" FontSize="Small"/>
+                            <Frame  Padding="6, 2">
+                                <Image Source="Tick.png" Aspect="AspectFit" HeightRequest="30" WidthRequest="30"/>
+                            </Frame>
+                        </StackLayout>
+                        <Button Text="change" FontFamily="ThemeFontBold" BackgroundColor="Transparent" HorizontalOptions="Start" Margin="-15, 0, 0, 0" TextColor="#00ADEF" Command="{Binding NavigateAddressPage}"/>
+                        <!-- end SHIPPING ADDRESS -->
+
+                        <BoxView BackgroundColor="#EBEBEB" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+
+                        <!-- start PAYMENT INFO -->
+                        <StackLayout Orientation="Horizontal" Margin="0, 20">
+                            <Label Text="Payments" FontFamily="ThemeFontBold" TextColor="Black" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="masterCard.png" Aspect="AspectFit"/>
+                            <Label FontFamily="ThemeFont">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Master Card" FontSize="Micro" TextColor="#929292"/>
+
+                                            <Span Text="**** **** ****  4547" FontSize="Small" TextColor="Black"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame  Padding="6, 8" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                <Image Source="tick.png" Aspect="AspectFit" HeightRequest="30" WidthRequest="30"/>
+                            </Frame>
+                        </StackLayout>
+                        <Button Text="change" FontFamily="ThemeFontBold" BackgroundColor="Transparent" HorizontalOptions="Start" Margin="-15, 0, 0, 0" TextColor="#00ADEF" Command="{Binding NavigatePaymentsCommand}"/>
+                        <!-- end PAYMENT INFO -->
+                        <!-- start BOTTOM BUTTONS -->
+                        <StackLayout Orientation="Horizontal" Spacing="20" Margin="0,0,0,20">
+                            <Button Text="Back" TextColor="Black" CornerRadius="10" BorderWidth="1" BackgroundColor="Transparent" BorderColor="#00ADEF" HorizontalOptions="FillAndExpand" Command="{Binding  NavigatePaymentsCommand}" />
+                            <Button Text="Pay" TextColor="White" CornerRadius="10" BorderWidth="1" BackgroundColor="#00ADEF" HorizontalOptions="FillAndExpand" Command="{Binding NavigateOrderAcceptedCommand}"  />
+                        </StackLayout>
+                        <!-- end BOTTOM BUTTONS -->
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

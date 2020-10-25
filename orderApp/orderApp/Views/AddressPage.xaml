@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             x:Class="orderApp.Views.AddressPage"
+             Title="Checkout"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <ViewModels:CartViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" Auto"/>
+
+                <RowDefinition Height=" *"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- <Grid Grid.Row="0" BackgroundColor="#00ADEF" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+
+
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="0"
+                             Margin="10,20,0,0">
+
+                    <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
+                             Source="LeftArrow.png" 
+                                 HeightRequest="25"
+                                 VerticalOptions="Start"
+                                 HorizontalOptions="Start" Command="{Binding  CheckOutCommand}"/>
+                    <Label Text="Checkout" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="StartAndExpand"
+                           VerticalTextAlignment="Start"/>
+
+                     <Label Text="Items(5)" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"/>
+                </StackLayout>
+        </Grid> -->
+
+        <StackLayout Orientation="Vertical" Padding="20" Grid.Row="1">
+
+                <!-- start TIMELINE BUBBLES -->
+                <StackLayout Orientation="Horizontal" Spacing="0" Padding="10, 0">
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD">
+                        <Frame BackgroundColor="#00ADEF" CornerRadius="50"/>
+                    </Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#00ADEF" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD">
+                        <Frame BackgroundColor="#00ADEF" CornerRadius="50"/>
+                    </Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#DDDDDD" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Delivery" TextColor="Black"  HorizontalOptions="StartAndExpand"/>
+                    <Label Text="Address" TextColor="Black"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Payments" TextColor="#707070"  HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <!-- end TIMELINE BUBBLES -->
+
+                <!-- start TICK WITCH TEXT -->
+                <StackLayout Orientation="Horizontal" Margin="0, 20">
+                    <!--<Frame CornerRadius="50" WidthRequest="12" HeightRequest="12" Padding="5" BackgroundColor="#FA4248">
+                        <Image Source="tick.png" Aspect="AspectFit"/>
+                    </Frame>-->
+                    <CheckBox Color="#00ADEF" IsChecked="True"/>
+                    <Label Text="Billing address is the same as delivery" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" FontFamily="ThemeFont"/>
+                </StackLayout>
+                <!-- end TICK WITCH TEXT -->
+
+                <!-- start ADDRESS -->
+                <Label Text="Street1" TextColor="#707070"  HorizontalOptions="FillAndExpand"/>
+                <Entry Placeholder="12, Bay brook" TextColor="Black" HorizontalOptions="FillAndExpand" />
+
+                <Label Text="Street2" TextColor="#707070" HorizontalOptions="FillAndExpand" />
+                <Entry Placeholder="Sharps Rd." TextColor="Black" HorizontalOptions="FillAndExpand" />
+
+                <Label Text="City" TextColor="#707070" HorizontalOptions="FillAndExpand"/>
+                <Entry Placeholder="Keilor East" TextColor="Black" HorizontalOptions="FillAndExpand" />
+
+                <StackLayout Orientation="Horizontal" >
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="State" TextColor="#707070" HorizontalOptions="FillAndExpand" />
+                        <Entry Placeholder="Melbourne" TextColor="Black" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="Country" TextColor="#707070" HorizontalOptions="FillAndExpand"/>
+                        <Entry Placeholder="Australia" TextColor="Black" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- end ADDRESS -->
+
+                <!-- start BOTTOM BUTTONS -->
+                <StackLayout Orientation="Horizontal" Spacing="30" VerticalOptions="EndAndExpand">
+                    <Button Text="Back" TextColor="Black" CornerRadius="10" BorderWidth="1" BackgroundColor="Transparent" BorderColor="#00ADEF" HorizontalOptions="FillAndExpand" Command="{Binding  CheckOutCommand}" />
+                    <Button Text="Next" TextColor="White" CornerRadius="10" BorderWidth="1" BackgroundColor="#00ADEF" HorizontalOptions="FillAndExpand" Command="{Binding NavigatePaymentsCommand}"  />
+                </StackLayout>
+                <!-- end BOTTOM BUTTONS -->
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

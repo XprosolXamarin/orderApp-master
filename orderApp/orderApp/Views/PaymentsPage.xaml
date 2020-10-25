@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             x:Class="orderApp.Views.PaymentsPage"
+             Title="Checkout"
+             BackgroundColor="White"
+               xmlns:tabview="clr-namespace:Xam.Plugin.TabView;assembly=Xam.Plugin.TabView"
+             xmlns:frame="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.BindingContext>
+        <ViewModels:CartViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" Auto"/>
+
+                <RowDefinition Height=" *"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--  <Grid Grid.Row="0" BackgroundColor="#00ADEF" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+
+
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Horizontal" 
+                             Grid.Row="0"
+                             Margin="10,20,0,0">
+
+                    <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
+                             Source="Back.png" 
+                                 HeightRequest="25"
+                                 HorizontalOptions="Start" Command="{Binding NavigateAddressPage}"/>
+                    <Label Text="Checkout" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="StartAndExpand"
+                           VerticalTextAlignment="Center"/>
+
+                    <Label Text="Items(5)" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+            -->
+            <StackLayout Orientation="Vertical" Padding="20" Grid.Row="1">
+
+                <!-- start TIMELINE BUBBLES -->
+                <StackLayout Orientation="Horizontal" Spacing="0" Padding="10, 0">
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD">
+                        <Frame BackgroundColor="#00ADEF" CornerRadius="50"/>
+                    </Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#00ADEF" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD">
+                        <Frame BackgroundColor="#00ADEF" CornerRadius="50"/>
+                    </Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#00ADEF" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD">
+                        <Frame BackgroundColor="#00ADEF" CornerRadius="50"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Delivery" TextColor="Black"  HorizontalOptions="StartAndExpand"/>
+                    <Label Text="Address" TextColor="Black"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Payments" TextColor="Black"  HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <!-- end TIMELINE BUBBLES -->
+                <tabview:TabViewControl HeaderBackgroundColor="Transparent"
+                                                HeaderSelectionUnderlineColor="#00ADEF"
+                                                HeaderSelectionUnderlineThickness="2"
+                                                HeaderTabTextColor="#00ADEF"
+                                                HeaderTabTextFontFamily="ThemeFontBold"
+                                                HeaderTabTextFontSize="14"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                IsSwipeEnabled="True"
+                                                TabHeaderSpacing="0"
+                                                ContentHeight="300">
+                    <tabview:TabViewControl.ItemSource>
+                        <tabview:TabItem HeaderText="Cash on Delivery">
+                            <StackLayout VerticalOptions="StartAndExpand" Spacing="0" Padding="0, 20, 0, 0">
+                                <frame:PancakeView CornerRadius="10, 10, 0, 0" Padding="20" BackgroundColor="#FFF5F6">
+                                    <Image Source="COD.png" HorizontalOptions="FillAndExpand" Aspect="AspectFit"/>
+                                </frame:PancakeView>
+                                <frame:PancakeView CornerRadius="0, 0, 10, 10" Padding="10" BackgroundColor="#FFFCFC">
+                                    <Label Text="Shop At Home! Pay At Door" FontFamily="ThemeFont" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                </frame:PancakeView>
+                            </StackLayout>
+                        </tabview:TabItem>
+                        <tabview:TabItem HeaderText="Credit/Debit Card">
+                            <StackLayout>
+                                <!-- start ADDRESS -->
+                                <Label Text="Card Name" FontFamily="ThemeFont" TextColor="#707070" HorizontalOptions="FillAndExpand"/>
+                                <Entry Placeholder="Jamesons Dunn" FontFamily="ThemeFont" TextColor="Black" HorizontalOptions="FillAndExpand" Keyboard="Text"/>
+
+                                <Label Text="Card Number" FontFamily="ThemeFont" TextColor="#707070" HorizontalOptions="FillAndExpand"/>
+                                <Entry Placeholder="4560 5644 3224 4543" FontFamily="ThemeFont" TextColor="Black" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                        <Label Text="Card Expiry" FontFamily="ThemeFont" TextColor="#707070" HorizontalOptions="FillAndExpand"/>
+                                        <DatePicker MinimumDate="01/01/2018" MaximumDate="01/01/2020" Date="01/01/2019" FontFamily="ThemeFont" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                        <Label Text="CVV" FontFamily="ThemeFont" TextColor="#707070" HorizontalOptions="FillAndExpand"/>
+                                        <Entry Placeholder="467" FontFamily="ThemeFont" TextColor="Black" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <CheckBox Color="#00ADEF"/>
+                                    <Label Text="Save Card" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                                <!-- end ADDRESS -->
+                            </StackLayout>
+                        </tabview:TabItem>
+                    </tabview:TabViewControl.ItemSource>
+                </tabview:TabViewControl>
+                <!-- start BOTTOM BUTTONS -->
+                <StackLayout Orientation="Horizontal" Spacing="30">
+                    <Button Text="Back" TextColor="Black" CornerRadius="10" BorderWidth="1" BackgroundColor="Transparent" BorderColor="#00ADEF" HorizontalOptions="FillAndExpand" Command="{Binding NavigateAddressPage}"/>
+                    <Button Text="NExt" TextColor="White" CornerRadius="10" BorderWidth="1" BackgroundColor="#00ADEF" HorizontalOptions="FillAndExpand" Command="{Binding NavigateSummaryPage}" />
+                </StackLayout>
+                <!-- end BOTTOM BUTTONS -->
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

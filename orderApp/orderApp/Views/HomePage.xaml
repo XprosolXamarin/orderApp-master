@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             x:Class="orderApp.Views.HomePage"
+             BackgroundImageSource="HomeBackground.png"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <ViewModels:HomeViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Superstore, an e-commerce app!" FontFamily="ThemeFontBold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="Large"
+                   Margin="40"/>
+            <Frame BackgroundColor="White" HorizontalOptions="Fill" Padding="3"
+                   Margin="20,0,20,20"
+                   HeightRequest="50">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="Home.png"/>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Go to the Home Page" TextColor="Black"
+                           FontFamily="ThemeFontBold"
+                           VerticalTextAlignment="Start" FontSize="Small"/>
+                        <Label Text="Start to explore your shopping paradise" 
+                           FontFamily="ThemeFontMedium"
+                           VerticalTextAlignment="Center" />
+                    </StackLayout>
+
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToHomePage}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame BackgroundColor="White" HorizontalOptions="Fill" Padding="3"
+                    Margin="20,0,20,20"
+                   HeightRequest="50">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="Scan.png"/>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Scan Your Product" TextColor="Black"
+                           FontFamily="ThemeFontBold"
+                           VerticalTextAlignment="Start" FontSize="Small"/>
+                        <Label Text="Start scan your products." 
+                           FontFamily="ThemeFontMedium"
+                           VerticalTextAlignment="Center" />
+                    </StackLayout>
+
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToScanPage}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame BackgroundColor="White" HorizontalOptions="Fill" Padding="3"
+                   Margin="20,0,20,20"
+                   HeightRequest="50">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="search.png"/>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Search your products" TextColor="Black"
+                           FontFamily="ThemeFontBold"
+                           VerticalTextAlignment="Start" FontSize="Small"/>
+                        <Label Text="You can search what you need so quick" 
+                           FontFamily="ThemeFontMedium"
+                           VerticalTextAlignment="Center" />
+                    </StackLayout>
+
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToSearchPage}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame BackgroundColor="White" HorizontalOptions="Fill" Padding="3"
+                   Margin="20,0,20,20"
+                   HeightRequest="50">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="help.png"/>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="You need the help ?" TextColor="Black"
+                           FontFamily="ThemeFontBold"
+                           VerticalTextAlignment="Start" FontSize="Small"/>
+                        <Label Text="Support team can help you 24/7" 
+                              
+                           FontFamily="ThemeFontMedium"
+                           VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToHelpPage}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
